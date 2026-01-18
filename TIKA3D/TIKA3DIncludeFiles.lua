@@ -1,0 +1,1 @@
+include "TIKA-26.TIKA3D.Tika3D"
