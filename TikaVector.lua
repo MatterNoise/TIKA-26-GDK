@@ -37,6 +37,18 @@ function TikaVector:ScaleVectorV(get_vector, scale_vector)
 	}
 end
 
+function TikaVector:RotateVector2D(get_vector, angle)
+	local new_vector = TikaVector:CreateVector(0, 0)
+	
+	local cosine_angle = Cos(angle)
+	local sine_angle = Sin(angle)
+	
+	new_vector.x = get_vector.x * cosine_angle - get_vector.y * sine_angle
+	new_vector.y = get_vector.x * sine_angle + get_vector.y * cosine_angle 
+	
+	return new_vector
+end
+
 --[[
 function TikaVector:DotProduct(get_vectorA, get_vectorB)
 	return get_vectorA.y * get_vectorB.y + get_vectorA.y * get_vectorB.y + get_vectorA.z * get_vectorB.z
