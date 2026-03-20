@@ -89,4 +89,5 @@ function TikaDraw:DrawSprite(get_sprite_id, get_sprite_position, get_sprite_colo
 end
 
 function TikaDraw:DrawTilemap(get_tilemap_position, get_tilemap_draw_limits, get_tilemap_screen_position, get_tilemap_colorkey, get_tilemap_draw_scale, get_remap_function)
+	
 end

@@ -49,8 +49,8 @@ function TikaVector:RotateVector2D(get_vector, angle)
 	return new_vector
 end
 
---[[
 function TikaVector:DotProduct(get_vectorA, get_vectorB)
-	return get_vectorA.y * get_vectorB.y + get_vectorA.y * get_vectorB.y + get_vectorA.z * get_vectorB.z
+	trace(get_vectorA)
+	
+	return get_vectorA.x * get_vectorB.x + get_vectorA.y * get_vectorB.y + get_vectorA.z * get_vectorB.z
 end
-]]--
