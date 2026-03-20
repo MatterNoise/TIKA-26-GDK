@@ -50,7 +50,9 @@ function TikaVector:RotateVector2D(get_vector, angle)
 end
 
 function TikaVector:DotProduct(get_vectorA, get_vectorB)
-	trace(get_vectorA)
-	
-	return get_vectorA.x * get_vectorB.x + get_vectorA.y * get_vectorB.y + get_vectorA.z * get_vectorB.z
+	return ((get_vectorA.x * get_vectorB.x) + (get_vectorA.y * get_vectorB.y) + (get_vectorA.z * get_vectorB.z))
+end
+
+function TikaVector:Length(get_vector)
+	return Sqrt((get_vector.x * get_vector.x) + (get_vector.y * get_vector.y) + (get_vector.z * get_vector.z))
 end
