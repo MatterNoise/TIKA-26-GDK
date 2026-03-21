@@ -8,6 +8,10 @@ function TikaDraw:DrawLine(get_line_start, get_line_end, get_line_color)
 	line(get_line_start.x, get_line_start.y, get_line_end.x, get_line_end.y, get_line_color)
 end
 
+function TikaDraw:DrawCircle(get_circle_position, get_circle_radius, get_circle_color)
+	circ(get_circle_position.x, get_circle_position.y, get_circle_radius, get_circle_color)
+end
+
 function TikaDraw:DrawTexturedTriangle(get_triangle_position_a, get_triangle_position_b, get_triangle_position_c, get_triangle_uv_a, get_triangle_uv_b, get_triangle_uv_c, get_texture_source, get_texture_chromakey)
 	local new_texture_source = get_texture_source or 0
 	local new_texture_chromakey = get_texture_chromakey or -1
@@ -89,5 +93,14 @@ function TikaDraw:DrawSprite(get_sprite_id, get_sprite_position, get_sprite_colo
 end
 
 function TikaDraw:DrawTilemap(get_tilemap_position, get_tilemap_draw_limits, get_tilemap_screen_position, get_tilemap_colorkey, get_tilemap_draw_scale, get_remap_function)
-	
+	local new_tilemap_draw_limits = get_tilemap_draw_limits or TikaVector:CreateVector(30, 17)
+	local new_tilemap_screen_position = get_tilemap_screen_position or TikaVector:CreateVector(0, 0)
+	local new_tilemap_colorkey = get_tilemap_colorkey or 0
+	local new_tilemap_draw_scale = get_tilemap_draw_scale or 1
+
+	map(get_tilemap_position.x, get_tilemap_position.y,
+		new_tilemap_draw_limits.x, new_tilemap_draw_limits.y,
+		new_tilemap_screen_position.x, new_tilemap_screen_position.y,
+		new_tilemap_colorkey, new_tilemap_draw_scale
+	)
 end
