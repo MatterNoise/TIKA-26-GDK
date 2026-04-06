@@ -1,66 +1,41 @@
+-- TikaVector Metatable declaration
 local TikaVector = {}
 
 -- Vector Creation
-function TikaVector:CreateVector(get_x, get_y, get_z)
+function newTikaVector(get_x, get_y, get_z)
 	local new_x = get_x or 0
 	local new_y = get_y or 0
 	local new_z = get_z or 0
 	
-	return {x = new_x, y = new_y, z = new_z}
-end
-
-function TikaVector:GetVectorString(get_vector)
-	local vector_string = "(" .. get_vector.x .. ", " .. get_vector.y .. ", " .. get_vector.z .. ")"
-
-	return vector_string
-end
-
--- Vector Math
-function TikaVector:TranslateVectorV(get_vector, position_vector)
-	return {x = get_vector.x + position_vector.x,
-	        y = get_vector.y + position_vector.y,
-	        z = get_vector.z + position_vector.z,
+	local new_vector = {
+		x = new_x,
+		y = new_y,
+		z = new_z
 	}
-end
 
-function TikaVector:ScaleVectorS(get_vector, scale)
-	return {x = get_vector.x * scale,
-	        y = get_vector.y * scale,
-	        z = get_vector.z * scale,
-	}
-end
+	setmetatable(new_vector, TikaVector)
 
-function TikaVector:ScaleVectorV(get_vector, scale_vector)
-	return {x = get_vector.x * scale_vector.x,
-	        y = get_vector.y * scale_vector.y,
-	        z = get_vector.z * scale_vector.z,
-	}
-end
-
-function TikaVector:RotateVector2D(get_vector, angle)
-	local new_vector = TikaVector:CreateVector(0, 0)
-	
-	local cosine_angle = Cos(angle)
-	local sine_angle = Sin(angle)
-	
-	new_vector.x = get_vector.x * cosine_angle - get_vector.y * sine_angle
-	new_vector.y = get_vector.x * sine_angle + get_vector.y * cosine_angle 
-	
 	return new_vector
 end
 
-function TikaVector:Distance(get_vectorA, get_vectorB)
-	local distance_x = get_vectorB.x - get_vectorA.x
-	local distance_y = get_vectorB.y - get_vectorA.y
-	local distance_z = get_vectorB.z - get_vectorA.z
-
-	return Sqrt(distance_x * distance_x + distance_y * distance_y + distance_z * distance_z)
+-- Vector Tostring
+function TikaVector.__tostring(get_vector)
+	return "(" .. get_vector.x .. ", " .. get_vector.y .. ", " .. get_vector.z .. ")"
 end
 
-function TikaVector:DotProduct(get_vectorA, get_vectorB)
-	return (get_vectorA.x * get_vectorB.x + get_vectorA.y * get_vectorB.y + get_vectorA.z * get_vectorB.z)
+-- Vector Operators
+function TikaVector.__add(get_vector_a, get_vector_b)
+	return newTikaVector(
+		get_vector_a.x + get_vector_b.x,
+		get_vector_a.y + get_vector_b.y,
+		get_vector_a.z + get_vector_b.z
+	)
 end
 
-function TikaVector:Length(get_vector)
-	return Sqrt(get_vector.x * get_vector.x + get_vector.y * get_vector.y + get_vector.z * get_vector.z)
+function TikaVector.__sub(get_vector_a, get_vector_b)
+	return newTikaVector(
+		get_vector_a.x - get_vector_b.x,
+		get_vector_a.y - get_vector_b.y,
+		get_vector_a.z - get_vector_b.z
+	)
 end
