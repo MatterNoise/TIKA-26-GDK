@@ -1,5 +1,3 @@
-
-
 function TikaDrawPixel(get_pixel_position, get_pixel_color)
 	pix(get_pixel_position.x, get_pixel_position.y, get_pixel_color)
 end
