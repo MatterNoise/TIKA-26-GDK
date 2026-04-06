@@ -39,3 +39,19 @@ function TikaVector.__sub(get_vector_a, get_vector_b)
 		get_vector_a.z - get_vector_b.z
 	)
 end
+
+function TikaVector.__mul(get_vector_a, get_vector_b)
+	return newTikaVector(
+		get_vector_a.x * get_vector_b.x,
+		get_vector_a.y * get_vector_b.y,
+		get_vector_a.z * get_vector_b.z
+	)
+end
+
+function TikaVector.__div(get_vector_a, get_vector_b)
+	return newTikaVector(
+		get_vector_a.x / get_vector_b.x,
+		get_vector_a.y / get_vector_b.y,
+		get_vector_a.z / get_vector_b.z
+	)
+end
